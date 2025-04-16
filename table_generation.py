@@ -1,6 +1,7 @@
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, PatternFill, Font
 from data import getInfo
+from datetime import date
 
 # Workbook and table variable
 wb = Workbook()
@@ -54,4 +55,9 @@ for a in range(len(tickersName)):
 
         cel.value = info[b]
 
-wb.save("finance-table.xlsx")
+# Date to table name
+today = date.today()
+day = str(today.day)
+month = str(today.month) 
+
+wb.save("finance-table"+day+"-"+month+".xlsx")
