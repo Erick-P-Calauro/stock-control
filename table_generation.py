@@ -3,6 +3,18 @@ from openpyxl.styles import Alignment, PatternFill, Font
 from data import getInfo
 from datetime import date
 
+# Tickers 
+tickersName = []
+
+# Collecting Tickers 
+while True:
+    name = input("Digite um ticker (0 para finalizar) : ")
+
+    if name == "0":
+        break
+    
+    tickersName.append(name)
+
 # Workbook and table variable
 wb = Workbook()
 table = wb.create_sheet("table", 0)
@@ -15,11 +27,6 @@ title_line = ["Ação", "Cotação", "D.Y. (12M)",
                   "VPA", "LPA", "Preço Teto Bazin", 
                   "Valor Intrínseco", "Margem Bazin", 
                   "Margem Graham"]
-
-# Tickers 
-tickersName = ["BBAS3", "BBDC4", "BRBI11", "CMIG4", "CMIN3", 
-               "CSMG3", "FIQE3", "ISAE4", "ITSA4", "ITUB4", 
-               "PETR4", "POMO3", "SAPR4", "TAEE4", "VBBR3"]
 
 # Writing title line 
 for i in range(len(title_line)):

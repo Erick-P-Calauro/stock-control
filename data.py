@@ -1,12 +1,12 @@
-import yfinance as yf
+from values.get_ticker_info import get_ticker_info
 
 def getInfo(tickerName):
-    ticker = yf.Ticker(str(tickerName)+".SA").info
+    ticker = get_ticker_info(tickerName)
 
-    VPA = ticker["bookValue"]
-    LPA = ticker["trailingEps"]
-    DY = ticker["dividendYield"] / 100
-    PRICE = ticker["currentPrice"]
+    VPA = ticker["vpa"]
+    LPA = ticker["lpa"]
+    DY = ticker["dy"]
+    PRICE = ticker["cotação"]
     BAZIN = (PRICE * DY) / 0.07
     BAZIN_MARGIN = ((BAZIN - PRICE) / BAZIN)
     GRAHAM = (LPA * VPA * 22.5) ** 0.5
